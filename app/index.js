@@ -5,7 +5,7 @@ import routes from './routes/index.js';
 
 const app = express();
 
-mongoose.connect("mongodb://localhost:27017/YourDB", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/YourDB", (err, db)=> {});
 
 /**
     * Middleware
