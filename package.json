@@ -1,0 +1,51 @@
+{
+  "name": "scoutsapi",
+  "version": "1.0.0",
+  "description": "Soucts API",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js --exec babel-node --presets env",
+    "release": "npm run clean && npm run build && npm run serve",
+    "clean": "rm -rf dist && mkdir dist",
+    "build": "babel . -s -D -d dist --presets env --ignore node_modules,coverage",
+    "serve": "node dist/server.js",
+    "coverage": "nyc --all --reporter html --reporter text-summary npm test",
+    "test": "mocha --require babel-register ./test/unit --recursive --exit",
+    "test:int": "mocha --require babel-register ./test/int --recursive --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinaykp/scouts.git"
+  },
+  "keywords": [
+    "Scoust",
+    "API"
+  ],
+  "author": "Vinay P",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vinaykp/scouts/issues"
+  },
+  "homepage": "https://github.com/vinaykp/scouts#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.0",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-istanbul": "^5.1.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "proxyquire": "^2.1.0",
+    "request": "^2.88.0",
+    "sinon": "^7.1.1",
+    "supertest": "^3.3.0"
+  }
+}

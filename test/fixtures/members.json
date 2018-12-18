@@ -1,0 +1,34 @@
+{
+    "all": {
+        "success": {
+            "res": {
+                "statusCode": 200,
+                "headers": {
+                    "content-type": "application/json"
+                }
+            },
+            "body": {
+                "status": "success",
+                "data": [
+                    {
+                        "id": 4,
+                        "name": "Brad Pitt",
+                        "age": 7,
+                        "email": "b.p@x.com"
+                    },
+                    {
+                        "id": 5,
+                        "name": "John King",
+                        "age": 8,
+                        "email": "j.k@x.com"
+                    },
+                    {
+                        "name": "Wills Smith",
+                        "age": 6,
+                        "email": "w.s@x.com"
+                    }
+                ]
+            }
+        }
+    }
+}
