@@ -2,9 +2,11 @@ version: '2'
 services:
   mongo:
     container_name: scouts-mongo
-    image: mongo:latest
+    image: mongo
     volumes:
       - ./data:/data/db
+    ports:
+      - "27017:27017" 
   app:
     container_name: scouts-api
     restart: always
