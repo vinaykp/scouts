@@ -10,11 +10,9 @@ services:
     restart: always
     image: vinaykp/scouts-api:latest
     build: .
-    command: >
-      /bin/bash -c "
-        sleep 30;
-        npm start
-        "
+    command: 
+      - sleep 15
+      - npm start
     ports:
       - "3000:3000"
     depends_on:
