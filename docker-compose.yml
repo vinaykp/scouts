@@ -8,16 +8,16 @@ services:
   app:
     container_name: scouts-api
     restart: always
-    build: .
     image: vinaykp/scouts-api:latest
-    command: npm start
+    build: .
+    command: >
+      /bin/bash -c "
+        sleep 30;
+        npm start
+        "
     ports:
       - "3000:3000"
     depends_on:
       - mongo
     environment:
       MONGODB_URI: "mongodb://mongo:27017"
-
-
-
-
