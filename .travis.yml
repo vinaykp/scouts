@@ -18,4 +18,4 @@ jobs:
         - docker build -t scouts-api .
         - docker images
         - docker tag scouts-api vinaykp/scouts-api
-        - docker push viaykp/scouts-api:latest
+        - docker push vinaykp/scouts-api:latest
