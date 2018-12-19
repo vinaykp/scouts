@@ -1,6 +1,7 @@
 /node_modules
 /coverage
 /dist
+/data
 .vscode
 .nyc_output
 

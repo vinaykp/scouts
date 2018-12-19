@@ -7,4 +7,10 @@ cache:
 script:
   - npm install
   - npm test
-  
+deploy:
+  provider: script
+  script: 
+    - docker-compose build
+    - bash docker_push
+  on:
+    branch: master

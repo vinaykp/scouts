@@ -4,12 +4,8 @@ import bodyParser from 'body-parser';
 import routes from './routes/index.js';
 
 const app = express();
-
-mongoose.connect("mongodb://localhost:27017/YourDB", (err, db)=> {});
-
-/**
-    * Middleware
-    */
+const DB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+mongoose.connect(DB_URI + "/scoutsdb", { useNewUrlParser: true }, (err, db)=> {});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -27,10 +23,6 @@ app.use((err, req, res, next) => {
     res.status(500).send(`Error: ${err}`);
     next();
 });
-
-/**
-    * Register the routes
-    */
 
 routes(app);
 
