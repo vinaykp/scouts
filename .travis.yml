@@ -12,13 +12,10 @@ jobs:
     - stage: unit-test 
       script:   
         - npm test
-    -stage: functional-test
-      script:
-        - docker-compose up
-        - npm run test:int
-    - stage: register docker image
+    - stage: build docker image
       script:
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker build -t scouts-api .
         - docker images
         - docker tag scouts-api vinaykp/scouts-api
         - docker push vinaykp/scouts-api:latest
