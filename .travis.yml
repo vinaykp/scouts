@@ -22,3 +22,4 @@ jobs:
         - docker images
         - docker tag scouts-api vinaykp/scouts-api
         - docker push vinaykp/scouts-api:latest
+        

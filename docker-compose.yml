@@ -21,3 +21,4 @@ services:
       - mongo
     environment:
       MONGODB_URI: "mongodb://mongo:27017"
+      
