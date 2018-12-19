@@ -18,4 +18,4 @@ jobs:
         - docker build -t scouts-api .
         - docker images
         - docker tag scouts-api $DOCKER_USERNAME/scouts-api
-        - docker push $DOCKER_USERNAME/scouts-api:rc1
+        - docker push $DOCKER_USERNAME/scouts-api
