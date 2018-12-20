@@ -4,6 +4,11 @@ node_js:
 cache:
   directories:
     - "node_modules"
+addons:
+  sonarcloud:
+    organization: "vinaykp-github"
+    token:
+      secure: $SONAR_TOKEN
 jobs:
   include:
     - stage: build    
@@ -12,14 +17,17 @@ jobs:
     - stage: unit-test 
       script:   
         - npm test
+    -stage: sonar scan
+      script:
+        - sonar-scanner
     - stage: int-test
       script:
         - docker -v
         - docker-compose up -d
-        - sleep 45
+        - sleep 30
         - echo "Start Integration test"
         - npm run test:int    
-        - sleep 10
+        - sleep 5
         - docker-compose down
     - stage: push docker image
       script:
