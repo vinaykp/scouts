@@ -1,15 +1,9 @@
 language: node_js
-dist: trusty
 node_js: 
   - "stable"
 cache:
   directories:
     - "node_modules"
-addons:
-  sonarcloud:
-    organization: "vinaykp-github"
-    token:
-      secure: $SONAR_TOKEN
 jobs:
   include:
     - stage: build    
@@ -18,9 +12,6 @@ jobs:
     - stage: unit-test 
       script:   
         - npm test
-    -stage: sonar scan
-      script:
-        - sonar-scanner
     - stage: int-test
       script:
         - docker -v
@@ -37,10 +28,5 @@ jobs:
         - docker images
         - docker tag scouts-api vinaykp/scouts-api
         - docker push vinaykp/scouts-api:latest
-notifications:
-  email:
-    recipients:
-      - vinaykp@hotmail.com
-    on_success: never
-    on_failure: always
+
 
