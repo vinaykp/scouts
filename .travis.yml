@@ -18,15 +18,9 @@ jobs:
     - stage: unit-test 
       script:   
         - npm test
-    - stage: code coverage     
-      install:
-        - npm install -g codecov
-      script:
-        - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
-        - codecov    
     -stage: sonar scan
       script:
-        - sonar-scanner    
+        - sonar-scanner
     - stage: int-test
       script:
         - docker -v
@@ -47,5 +41,6 @@ notifications:
   email:
     recipients:
       - vinaykp@hotmail.com
-    on_success: never # default: change
-    on_failure: always # default: always
+    on_success: never
+    on_failure: always
+
