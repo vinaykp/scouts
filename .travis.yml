@@ -1,4 +1,5 @@
 language: node_js
+dist: trusty
 node_js: 
   - "stable"
 cache:
@@ -6,9 +7,9 @@ cache:
     - "node_modules"
 addons:
   sonarcloud:
-    organization: "vinaykp-github" # the key of the org you chose at step #3
+    organization: "vinaykp-github"
     token:
-      secure: "$SONAR_TOKEN" # encrypted value of your token
+      secure: $SONAR_TOKEN
 jobs:
   include:
     - stage: build    
