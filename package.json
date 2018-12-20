@@ -10,6 +10,7 @@
     "build": "babel . -s -D -d dist --presets env --ignore node_modules,coverage",
     "serve": "node dist/server.js",
     "coverage": "nyc --all --reporter html --reporter text-summary npm test",
+    "codecov": "istanbul cover node_modules/mocha/bin/_mocha && codecov -F istanbul_mocha npm test",
     "test": "mocha --require babel-register ./test/unit --recursive --exit",
     "test:int": "mocha --require babel-register ./test/int --recursive --exit"
   },

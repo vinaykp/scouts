@@ -4,6 +4,11 @@ node_js:
 cache:
   directories:
     - "node_modules"
+addons:
+  sonarcloud:
+    organization: "vinaykp-github" # the key of the org you chose at step #3
+    token:
+      secure: $SONAR_TOKEN # encrypted value of your token
 jobs:
   include:
     - stage: build    
@@ -12,6 +17,15 @@ jobs:
     - stage: unit-test 
       script:   
         - npm test
+    - stage: code coverage     
+      install:
+        - npm install -g codecov
+      script:
+        - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+        - codecov    
+    -stage: sonar scan
+      script:
+        - sonar-scanner    
     - stage: int-test
       script:
         - docker -v
@@ -28,3 +42,9 @@ jobs:
         - docker images
         - docker tag scouts-api vinaykp/scouts-api
         - docker push vinaykp/scouts-api:latest
+notifications:
+  email:
+    recipients:
+      - vinaykp@hotmail.com
+    on_success: never # default: change
+    on_failure: always # default: always
